@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="690.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.turkischerikscha.CONsettings">
+   <children>
+      <TextField fx:id="tfAmount" alignment="CENTER" layoutX="100.0" layoutY="97.0" onAction="#OnActionAmount" prefHeight="51.0" prefWidth="138.0" AnchorPane.bottomAnchor="542.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="97.0" />
+      <Label fx:id="lHowMany" alignment="CENTER" layoutX="100.0" layoutY="42.0" text="How many players?" textAlignment="CENTER" AnchorPane.bottomAnchor="620.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="42.0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfName1" layoutX="75.0" layoutY="228.0" promptText="Player 1" visible="false" AnchorPane.bottomAnchor="479.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="185.0" />
+      <TextField fx:id="tfName2" layoutX="101.0" layoutY="241.0" promptText="Player 2" visible="false" AnchorPane.bottomAnchor="423.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="240.0" />
+      <TextField fx:id="tfName3" layoutX="120.0" layoutY="308.0" promptText="Player 3" visible="false" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="295.0" />
+      <TextField fx:id="tfName4" layoutX="96.0" layoutY="402.0" promptText="Player 4" visible="false" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="350.0" />
+      <TextField fx:id="tfName5" layoutX="106.0" layoutY="412.0" promptText="Player 5" visible="false" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="405.0" />
+      <TextField fx:id="tfName6" layoutX="106.0" layoutY="412.0" promptText="Player 6" visible="false" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="460.0" />
+   </children>
+</AnchorPane>
