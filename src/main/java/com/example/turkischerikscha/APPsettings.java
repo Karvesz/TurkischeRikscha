@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -17,13 +18,15 @@ public class APPsettings extends Application {
     }
 
     @Override
-    public  void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws IOException {
         URL url = new File("src/main/resources/FXMLsettings.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
 
         Scene scene = new Scene(root, 368, 690);
 
         primaryStage.setTitle("Türkische Rikschafahrt");
+        URL url1 = new File("src/main/resources/images/S2_Logo.png").toURI().toURL();
+        primaryStage.getIcons().add(new Image(url1.openStream()));
         primaryStage.setScene(scene);
         primaryStage.show();
     }

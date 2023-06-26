@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+import javafx.scene.input.InputMethodEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -45,9 +45,21 @@ public class CONsettings {
     int age5 = 0;
     int age6 = 0;
 
+
+
+    public BinaryTree<Spieler> spielerBaum;
+    private Spieler aktuellerSpieler;
+    private Spielfeld Feld;
+
+    @FXML
+    public void initialize() {
+
+    }
+
+
     public void OnActionAmount(ActionEvent actionEvent) {
+
         amount = Integer.parseInt(tfAmount.getText());
-        lHowMany.setText("Namen eintragen");
 
         //set every tf on invisible
         tfName1.setVisible(false);
@@ -63,7 +75,6 @@ public class CONsettings {
         tfAge4.setVisible(false);
         tfAge5.setVisible(false);
         tfAge6.setVisible(false);
-
 
         if (amount > 1) {
             tfName1.setVisible(true);
@@ -98,22 +109,6 @@ public class CONsettings {
 
     public void OnActionStart(ActionEvent actionEvent) {
 
-        //Creating strings for names
-        name1 = tfName1.getText();
-        name2 = tfName2.getText();
-        name3 = tfName3.getText();
-        name4 = tfName4.getText();
-        name5 = tfName5.getText();
-        name6 = tfName6.getText();
-
-        //Creating ints for ages
-        age1 = Integer.parseInt(tfAge1.getText());
-        age2 = Integer.parseInt(tfAge1.getText());
-        age3= Integer.parseInt(tfAge1.getText());
-        age4 = Integer.parseInt(tfAge1.getText());
-        age5 = Integer.parseInt(tfAge1.getText());
-        age6 = Integer.parseInt(tfAge1.getText());
-
         Platform.runLater(new Runnable() {
             public void run() {
                 try {
@@ -131,6 +126,8 @@ public class CONsettings {
         testNameAge();
     }
 
+
+
     public void testNameAge() {
         System.out.println("Player 1:  Name: " + name1);
         System.out.println("           Age: " + age1);
@@ -145,4 +142,73 @@ public class CONsettings {
         System.out.println("Player 6:  Name: " + name6);
         System.out.println("           Age: " + age6);
     }
+
+
+    public void OnActiontfName1(ActionEvent actionEvent) {
+        name1 = tfName1.getText();
+    }
+
+    public void OnActiontfName2(ActionEvent actionEvent) {
+        name2 = tfName2.getText();
+    }
+
+    public void OnActiontfName3(ActionEvent actionEvent) {
+        name3 = tfName3.getText();
+    }
+
+    public void OnActiontfName4(ActionEvent actionEvent) {
+        name4 = tfName4.getText();
+    }
+
+    public void OnActiontfName5(ActionEvent actionEvent) {
+        name5 = tfName5.getText();
+    }
+
+    public void OnActiontfName6(ActionEvent actionEvent) {
+        name6 = tfName6.getText();
+    }
+
+    public void OnActiontfAge1(InputMethodEvent inputMethodEvent) {
+        age1 = Integer.parseInt(tfAge1.getText());
+    }
+
+    public void OnActiontfAge2(InputMethodEvent inputMethodEvent) {
+        age2 = Integer.parseInt(tfAge2.getText());
+    }
+
+    public void OnActiontfAge3(InputMethodEvent inputMethodEvent) {
+        age3 = Integer.parseInt(tfAge3.getText());
+    }
+
+    public void OnActiontfAge4(InputMethodEvent inputMethodEvent) {
+        age4 = Integer.parseInt(tfAge4.getText());
+    }
+
+    public void OnActiontfAge5(InputMethodEvent inputMethodEvent) {
+        age5 = Integer.parseInt(tfAge5.getText());
+    }
+    public void OnActiontfAge6(InputMethodEvent inputMethodEvent) {
+        age6 = Integer.parseInt(tfAge6.getText());
+    }
+
+    public String getName1() {
+        return name1;
+    }
+    public String getName2() {
+        return name2;
+    }
+    public String getName3() {
+        return name3;
+    }
+    public String getName4() {
+        return name4;
+    }
+    public String getName5() {
+        return name5;
+    }
+    public String getName6() {
+        return name6;
+    }
+
+
 }
