@@ -23,6 +23,7 @@ public class APPstart extends Application {
     public void start(Stage primaryStage) throws IOException {
         URL url = new File("src/main/resources/FXMLstart.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
+        root.setStyle("-fx-background-color: #254441");
 
         Scene scene = new Scene(root, 368, 690);
 

@@ -47,13 +47,21 @@ public class communication {
         }
         else{
             ausgabe.append("Falsch,");
-            a = String.valueOf(schluecke) + " Schlücke leeren";
+            a = String.valueOf(schluecke);
             ausgabe.append(schluecke);
         }
 
         System.out.println(ausgabe.toString());
-        return a;
-        //return ausgabe.toString();
+        if (CONsettings.getSpielerAlter1() > 18 || CONsettings.getSpielerAlter2() > 18 || CONsettings.getSpielerAlter3() > 18 || CONsettings.getSpielerAlter4() > 18 || CONsettings.getSpielerAlter5() > 18 || CONsettings.getSpielerAlter6() > 18) {
+            if (schluecke > 1) return a + " Schlücke leeren";
+            if (schluecke == 0) return a;
+            else return a + " Schluck leeren";
+        }
+        else {
+            if (schluecke > 1) return a + " Liegestütze machen";
+            if (schluecke == 0) return a;
+            else return a + " Liegestütz machen";
+        }
     }
 
     public String getGültige() {

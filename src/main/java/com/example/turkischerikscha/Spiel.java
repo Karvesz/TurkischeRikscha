@@ -38,7 +38,7 @@ public class Spiel {
         for (int i = 1; i <= anzahl; i++) {
             System.out.println("Wie heißt der " + i + ". Spieler?");
             String name = scanner.next();
-            Spieler spieler = new Spieler(name);
+            Spieler spieler = new Spieler(name, 0);
             if (spielerBaum == null) {
                 spielerBaum = new BinaryTree<Spieler>(spieler);
             } else {

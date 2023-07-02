@@ -3,13 +3,17 @@ package com.example.turkischerikscha;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class CONsettings {
     int amount;
@@ -30,22 +34,17 @@ public class CONsettings {
     public TextField tfAge5;
     public TextField tfAge6;
     public Button btnStart;
+    @FXML
+    public ImageView iw1;
+    @FXML
+    public AnchorPane ap1;
 
-    String na = "Kein Name";
-    String name1 = na;
-    String name2 = na;
-    String name3 = na;
-    String name4 = na;
-    String name5 = na;
-    String name6 = na;
-    int age1 = 0;
-    int age2 = 0;
-    int age3 = 0;
-    int age4 = 0;
-    int age5 = 0;
-    int age6 = 0;
-
-
+    public static Spieler sp1;
+    public static Spieler sp2;
+    public static Spieler sp3;
+    public static Spieler sp4;
+    public static Spieler sp5;
+    public static Spieler sp6;
 
     public BinaryTree<Spieler> spielerBaum;
     private Spieler aktuellerSpieler;
@@ -53,11 +52,13 @@ public class CONsettings {
 
     @FXML
     public void initialize() {
-
+        btnStart.setStyle("-fx-background-color: #dbbea1");
+        tfAmount.setStyle("-fx-background-color: #dbbea1");
     }
 
-
     public void OnActionAmount(ActionEvent actionEvent) {
+
+        lHowMany.setText("Name/Alter eingeben");
 
         amount = Integer.parseInt(tfAmount.getText());
 
@@ -78,23 +79,34 @@ public class CONsettings {
 
         if (amount > 1) {
             tfName1.setVisible(true);
+            tfName1.setStyle("-fx-background-color: #dbbea1;" + "-fx-prompt-text-fill: #254441;");
             tfAge1.setVisible(true);
+            tfAge1.setStyle("-fx-background-color: #dbbea1;" + "-fx-prompt-text-fill: #254441;");
             if (amount >= 2) {
                 tfName2.setVisible(true);
+                tfName2.setStyle("-fx-background-color: #dbbea1;" + "-fx-prompt-text-fill: #254441;");
                 tfAge2.setVisible(true);
-                System.out.println(name1);
+                tfAge2.setStyle("-fx-background-color: #dbbea1;" + "-fx-prompt-text-fill: #254441;");
                 if (amount >= 3) {
                     tfName3.setVisible(true);
+                    tfName3.setStyle("-fx-background-color: #dbbea1;" + "-fx-prompt-text-fill: #254441;");
                     tfAge3.setVisible(true);
+                    tfAge3.setStyle("-fx-background-color: #dbbea1;" + "-fx-prompt-text-fill: #254441;");
                     if (amount >= 4) {
                         tfName4.setVisible(true);
+                        tfName4.setStyle("-fx-background-color: #dbbea1;" + "-fx-prompt-text-fill: #254441;");
                         tfAge4.setVisible(true);
+                        tfAge4.setStyle("-fx-background-color: #dbbea1;" + "-fx-prompt-text-fill: #254441;");
                         if (amount >= 5) {
                             tfName5.setVisible(true);
+                            tfName5.setStyle("-fx-background-color: #dbbea1;" + "-fx-prompt-text-fill: #254441;");
                             tfAge5.setVisible(true);
+                            tfAge5.setStyle("-fx-background-color: #dbbea1;" + "-fx-prompt-text-fill: #254441;");
                             if (amount >= 6) {
                                 tfName6.setVisible(true);
+                                tfName6.setStyle("-fx-background-color: #dbbea1;" + "-fx-prompt-text-fill: #254441;");
                                 tfAge6.setVisible(true);
+                                tfAge6.setStyle("-fx-background-color: #dbbea1;" + "-fx-prompt-text-fill: #254441;");
                             }
                         }
                     }
@@ -103,12 +115,35 @@ public class CONsettings {
         }
 
         else {
-            lHowMany.setText("Not valid");
+            lHowMany.setText("Ungültig");
         }
     }
 
     public void OnActionStart(ActionEvent actionEvent) {
+        sp1 = new Spieler(tfName1.getText(), Integer.parseInt(tfAge1.getText()));
+        sp2 = new Spieler(tfName2.getText(), Integer.parseInt(tfAge2.getText()));
+        if (!tfName3.getText().equals("") && !Objects.equals(tfAge3.getText(), ""))
+            sp3 = new Spieler(tfName3.getText(), Integer.parseInt(tfAge3.getText()));
+        else sp3 = new Spieler("ka", 0);
+        if (!tfName4.getText().equals("") && !Objects.equals(tfAge4.getText(), ""))
+            sp4 = new Spieler(tfName4.getText(), Integer.parseInt(tfAge4.getText()));
+        else sp4 = new Spieler("ka", 0);
+        if (!tfName5.getText().equals("") && !Objects.equals(tfAge5.getText(), ""))
+            sp5 = new Spieler(tfName5.getText(), Integer.parseInt(tfAge5.getText()));
+        else sp5 = new Spieler("ka", 0);
+        if (!tfName6.getText().equals("") && !Objects.equals(tfAge6.getText(), ""))
+            sp6 = new Spieler(tfName6.getText(), Integer.parseInt(tfAge6.getText()));
+        else sp6 = new Spieler("ka", 0);
 
+        if (sp1.getAlter() < 18 || sp2.getAlter() < 18 || sp3.getAlter() < 18 || sp4.getAlter() < 18 || sp5.getAlter() < 18 || sp6.getAlter() < 18) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("WARNUNG");
+            alert.setHeaderText("Alkohol Warnung");
+            alert.setContentText("Sie haben Spieler unter 18 Jahren angegeben. \n" +
+                    "Bitte beachten Sie, dass der Konsum von Hochprozentigem erst ab 18 Jahren erlaubt ist. \n" + "Es werden statt Schlücken Liegestütze als Strafe verteilt.");
+
+            alert.showAndWait();
+        }
         Platform.runLater(new Runnable() {
             public void run() {
                 try {
@@ -123,92 +158,95 @@ public class CONsettings {
 
         Stage stage = (Stage) btnStart.getScene().getWindow();
         stage.close();
-        testNameAge();
     }
-
-
-
-    public void testNameAge() {
-        System.out.println("Player 1:  Name: " + name1);
-        System.out.println("           Age: " + age1);
-        System.out.println("Player 2:  Name: " + name2);
-        System.out.println("           Age: " + age2);
-        System.out.println("Player 3:  Name: " + name3);
-        System.out.println("           Age: " + age3);
-        System.out.println("Player 4:  Name: " + name4);
-        System.out.println("           Age: " + age4);
-        System.out.println("Player 5:  Name: " + name5);
-        System.out.println("           Age: " + age5);
-        System.out.println("Player 6:  Name: " + name6);
-        System.out.println("           Age: " + age6);
-    }
-
 
     public void OnActiontfName1(ActionEvent actionEvent) {
-        name1 = tfName1.getText();
+        sp1.setName(tfName1.getText());
     }
 
     public void OnActiontfName2(ActionEvent actionEvent) {
-        name2 = tfName2.getText();
+        sp2.setName(tfName2.getText());
     }
 
     public void OnActiontfName3(ActionEvent actionEvent) {
-        name3 = tfName3.getText();
+        sp3.setName(tfName3.getText());
     }
 
     public void OnActiontfName4(ActionEvent actionEvent) {
-        name4 = tfName4.getText();
+        sp4.setName(tfName4.getText());
     }
 
     public void OnActiontfName5(ActionEvent actionEvent) {
-        name5 = tfName5.getText();
+        sp5.setName(tfName5.getText());
     }
 
     public void OnActiontfName6(ActionEvent actionEvent) {
-        name6 = tfName6.getText();
+        sp6.setName(tfName6.getText());
     }
 
     public void OnActiontfAge1(InputMethodEvent inputMethodEvent) {
-        age1 = Integer.parseInt(tfAge1.getText());
+        sp1.setAlter(Integer.parseInt(tfAge1.getText()));
     }
 
     public void OnActiontfAge2(InputMethodEvent inputMethodEvent) {
-        age2 = Integer.parseInt(tfAge2.getText());
+        sp2.setAlter(Integer.parseInt(tfAge2.getText()));
     }
 
     public void OnActiontfAge3(InputMethodEvent inputMethodEvent) {
-        age3 = Integer.parseInt(tfAge3.getText());
+        sp3.setAlter(Integer.parseInt(tfAge3.getText()));
     }
 
     public void OnActiontfAge4(InputMethodEvent inputMethodEvent) {
-        age4 = Integer.parseInt(tfAge4.getText());
+        sp4.setAlter(Integer.parseInt(tfAge4.getText()));
     }
 
     public void OnActiontfAge5(InputMethodEvent inputMethodEvent) {
-        age5 = Integer.parseInt(tfAge5.getText());
+        sp5.setAlter(Integer.parseInt(tfAge5.getText()));
     }
+
     public void OnActiontfAge6(InputMethodEvent inputMethodEvent) {
-        age6 = Integer.parseInt(tfAge6.getText());
+        sp6.setAlter(Integer.parseInt(tfAge6.getText()));
     }
 
-    public String getName1() {
-        return name1;
-    }
-    public String getName2() {
-        return name2;
-    }
-    public String getName3() {
-        return name3;
-    }
-    public String getName4() {
-        return name4;
-    }
-    public String getName5() {
-        return name5;
-    }
-    public String getName6() {
-        return name6;
+    public static String getSpielerName1() {
+        return sp1.getName();
     }
 
+    public static String getSpielerName2() {
+        return sp2.getName();
+    }
 
+    public static String getSpielerName3() {
+        return sp3.getName();
+    }
+
+    public static String getSpielerName4() {
+        return sp4.getName();
+    }
+
+    public static String getSpielerName5() {
+        return sp5.getName();
+    }
+
+    public static String getSpielerName6() {
+        return sp6.getName();
+    }
+    public static int getSpielerAlter1() {
+        return sp1.getAlter();
+    }
+    public static int getSpielerAlter2() {
+        return sp2.getAlter();
+    }
+    public static int getSpielerAlter3() {
+        return sp3.getAlter();
+    }
+    public static int getSpielerAlter4() {
+        return sp4.getAlter();
+    }
+    public static int getSpielerAlter5() {
+        return sp5.getAlter();
+    }
+    public static int getSpielerAlter6() {
+        return sp6.getAlter();
+    }
 }

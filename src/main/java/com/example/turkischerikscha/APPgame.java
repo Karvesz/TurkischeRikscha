@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -15,6 +17,9 @@ import java.io.FileInputStream;
 import java.net.URL;
 
 public class APPgame extends Application {
+
+    @FXML
+    AnchorPane ap1;
 
     public static void main(String[] args) {
         launch(args);
@@ -24,7 +29,6 @@ public class APPgame extends Application {
     public void start(Stage primaryStage) throws Exception {
         URL url = new File("src/main/resources/FXMLgame.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-
         Scene scene = new Scene(root, 368, 690);
 
         FileInputStream input = new FileInputStream("src/main/resources/images/cards/Spielkarte_eichel1background1.png");
